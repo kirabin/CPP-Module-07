@@ -3,6 +3,7 @@
 # include <iostream>
 # include <string>
 
+// TODO: move realization of functions to hpp file;
 template< typename T >
 void swap(T& a, T& b);
 
