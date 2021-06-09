@@ -1,6 +1,6 @@
 NAME	=	a.out
 COMPILER=	clang++
-FLAGS	=	-Wall -Wextra -Werror
+FLAGS	=	-Wall -Wextra -Werror -g
 SRC		=	main.cpp
 INC		=	Array.hpp
 OBJ		=	$(SRC:.cpp=.o)

@@ -1,6 +1,7 @@
 #ifndef Array_hpp
 # define Array_hpp
 # include <exception>
+# include <iostream>
 
 template<typename T>
 class Array {
@@ -14,10 +15,15 @@ class Array {
 		}
 
 		Array(unsigned int n) {
-			_lenght = n;
-			array = new T[_lenght];
-			for (int i = 0; i < _lenght; i++) {
-				array[i] = 0;
+			if (n == 0) {
+				array = NULL;
+				_lenght = 0;
+			} else {
+				_lenght = n;
+				array = new T[_lenght];
+				for (int i = 0; i < _lenght; i++) {
+					array[i] = 0;
+				}
 			}
 		}
 
@@ -26,7 +32,7 @@ class Array {
 		}
 
 		Array& operator =(const Array& other) {
-			if (this->_lenght != 0) {
+			if (this->_lenght) {
 				delete [] array;
 			}
 			this->_lenght = other._lenght;
@@ -44,6 +50,14 @@ class Array {
 		}
 
 		T& operator[](int n) {
+			if (0 <= n && n < _lenght) {
+				return array[n];
+			} else {
+				throw std::exception();
+			}
+		}
+
+		const T& operator[](int n) const {
 			if (0 <= n && n < _lenght) {
 				return array[n];
 			} else {
